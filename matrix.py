@@ -38,6 +38,7 @@ def make_scale( x, y, z ):
 def make_rotX( theta ):    
     rx = new_matrix()
     ident( rx )
+    theta = math.radians( theta )
     rx[1][1] = math.cos( theta )
     rx[2][1] = -1 * math.sin( theta )
     rx[1][2] = math.sin( theta )
@@ -47,6 +48,7 @@ def make_rotX( theta ):
 def make_rotY( theta ):
     ry = new_matrix()
     ident( ry )
+    theta = math.radians( theta )
     ry[0][0] = math.cos( theta )
     ry[2][0] = -1 * math.sin( theta )
     ry[0][2] = math.sin( theta )
@@ -56,6 +58,7 @@ def make_rotY( theta ):
 def make_rotZ( theta ):
     rz = new_matrix()
     ident( rz )
+    theta = math.radians( theta )
     rz[0][0] = math.cos( theta )
     rz[1][0] = -1 * math.sin( theta )
     rz[0][1] = math.sin( theta )

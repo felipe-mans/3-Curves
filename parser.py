@@ -25,17 +25,26 @@ def parse_file( fname, points, transform, screen, color ):
             add_curve( points, param[0], param[1], param[2], param[3], param[4], param[5], param[6], pram[7], 0.001, "bezier")
             i += 2
         elif (data[i] == "xrotate"):
-            param = data[i+1].split(' ')
-            trans = make_rotX(math.radians(param[0]))
+            param = data[i+1]
+            trans = make_rotX(math.radians(int(param)))
+            matrix_mult(trans, transform)
             i += 2
         elif (data[i] == "yrotate"):
-            param = data[i+1].split(' ')
-            trans = make_rotY(param[0])
+            param = data[i+1]
+            trans = make_rotY(int(param[0]))
             i += 2
         elif (data[i] == "zrotate"):
-            param = data[i+1].split(' ')
-            trans  = make_rotZ(param[0])
+            param = data[i+1]
+            trans  = make_rotZ(int(param[0]))
             i += 2
+        elif (data[i] == "ident"):
+            ident( transform )
+        elif (data[i] == "apply"):
+            matrix_mult( transform, points )
+        elif (data[i] == "scale"):
+            param = data[i+1].split( " " )
+            m = make_scale(prama[0], param[1], param[2], transform )
+            matrix_mult( m, transform )
         elif (data[i] == "translate"):
             param = data[i+1].split(' ')
             matrix_mult( make_translate(param[0], param[1], param[2]), transform )
@@ -48,3 +57,6 @@ def parse_file( fname, points, transform, screen, color ):
             fname = data[i+1]
             save_ppm( screen, fname )
             i += 2
+        elif (data[i] == "quit"):
+            return
+
