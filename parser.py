@@ -26,13 +26,17 @@ def parse_file( fname, points, transform, screen, color ):
             i += 2
         elif (data[i] == "xrotate"):
             param = data[i+1]
-            transform = make_rotX(param[0])
+            trans = make_rotX(math.radians(param[0]))
+            
             i += 2
         elif (data[i] == "yrotate"):
             param = data[i+1]
-            transform = make_rotY(param[0])
+            trans = make_rotY(param[0])
             i += 2
         elif (data[i] == "zrotate"):
             param = data[i+1]
-            transform = make_rotZ(param[0])
+            trans  = make_rotZ(param[0])
             i += 2
+        elif (data[i] == "translate"):
+            param = data[i+1]
+            matrix_mult( make_translate(param[0], param[1], param[2]), transform )
