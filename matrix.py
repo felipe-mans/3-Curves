@@ -13,11 +13,20 @@ def make_hermite():
             [1, -2, 1, 0],
             [1, -1, 0, 0]]
 
+
 def generate_curve_coefs( p1, p2, p3, p4, t ):
-    hold = [[p1[0], p2[0], p3[0], p4[0]],
-         [p1[1], p2[1], p3[1], p4[1]]]
-    matrix_mult(t, hold)
-    return m
+    curve = []
+    if (t == "bezier"):
+        curve = make_bezier()
+    elif (t == "hermite"):
+        curve = make_hermite()
+    coef = new_matrix(4,1)
+    coef[0][0] = p1 
+    coef[0][1] = p2
+    coef[0][2] = p3
+    coef[0][3] = p4
+    matrix_mult(curve, coef)
+    return coef
 
 def make_translate( x, y, z ):
     t = new_matrix()
