@@ -1,0 +1,24 @@
+circle
+250 297 200
+circle
+275 297 175
+circle
+300 297 150
+circle
+325 297 125
+circle
+350 297 100
+circle
+375 297 75
+circle
+400 297 50
+circle
+425 297 25
+bezier
+0 0 100 200 300 150 200 100
+bezier
+0 0 200 300 400 250 300 200
+bezier
+0 0 300 400 500 350 400 300
+display
+quit
